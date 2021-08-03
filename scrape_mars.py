@@ -1,10 +1,14 @@
+#import dependencies
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 import time
 
+#define scrape function
 def scrape():
+
+    #
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
@@ -86,7 +90,7 @@ def scrape():
     facts_df = df[1:]
     facts_df.columns = header
 
-    facts = facts_df.to_html()
+    facts = facts_df.to_html(index=False)
 
     mars_data = {
         'news': news_data,
