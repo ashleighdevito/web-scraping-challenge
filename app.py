@@ -16,8 +16,11 @@ def home():
     #pull data document from Mongo
     mission_data = mongo.db.collection.find_one()
 
+    if mission_data:
+        return render_template("index.html", mars = mission_data)
     #return template and data
-    return render_template("index.html", mars = mission_data)
+    return render_template("landing.html")
+
 
 #define route to scrape new data
 @app.route("/scrape")
